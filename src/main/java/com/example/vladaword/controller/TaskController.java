@@ -32,26 +32,26 @@ public class TaskController {
     @PostMapping
     public String addTask(@ModelAttribute Task task) {
         taskService.saveTask(task);
-        return "redirect:/tasks";  // Перенаправление на список задач после добавления
+        return "redirect:/tasks";
     }
 
     @GetMapping("/edit/{id}")
     public String showEditTaskForm(@PathVariable  Long id, Model model) {
         Task task = taskService.getTaskById(id);
         model.addAttribute("task", task);
-        return "editTask";  // Имя шаблона для редактирования задачи
+        return "editTask";
     }
 
     @PostMapping("/update/{id}")
     public String updateTask(@PathVariable Long id, @ModelAttribute Task task) {
         task.setId(id);
         taskService.saveTask(task);
-        return "redirect:/tasks";  // Перенаправление на список задач после обновления
+        return "redirect:/tasks";
     }
 
    @GetMapping("/delete/{id}")
     public String deleteTask(@PathVariable  Long id) {
         taskService.deleteTask(id);
-        return "redirect:/tasks";  // Перенаправление на список задач после удаления
+        return "redirect:/tasks";
     }
 }
