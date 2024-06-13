@@ -20,13 +20,13 @@ public class TaskController {
     public String getAllTasks(Model model) {
         List<Task> tasks = taskService.getAllTasks();
         model.addAttribute("tasks", tasks);
-        return "taskFile";  // Имя шаблона без расширения
+        return "taskFile";
     }
 
     @GetMapping("/new")
     public String showNewTaskForm(Model model) {
         model.addAttribute("task", new Task());
-        return "newTask";  // Имя шаблона для добавления новой задачи
+        return "newTask";  
     }
 
     @PostMapping
