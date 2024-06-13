@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Task List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Task List</h1>
+    <a href="/tasks/new" class="btn btn-primary mb-3">Add New Task</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Place</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Employer</th>
+            <th>Completed</th> <!-- Новая колонка -->
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.place}">Place</td>
+            <td th:text="${task.date}">Date</td>
+            <td th:text="${task.price}">Price</td>
+            <td th:text="${task.employer}">Employer</td>
+            <td th:text="${task.completed ? 'Yes' : 'No'}">Completed</td> <!-- Отображение статуса выполнения -->
+            <td>
+                <a th:href="@{/tasks/edit/{id}(id=${task.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{/tasks/delete/{id}(id=${task.id})}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
